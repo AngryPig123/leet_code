@@ -1,3 +1,5 @@
+import java.sql.SQLOutput;
+
 /**
  * packageName    : PACKAGE_NAME
  * fileName       : ReverseInteger1
@@ -12,7 +14,9 @@
 public class PowXN {
 
     public static void main(String[] args) {
-        System.out.println(myPow(2.1, 3));
+        System.out.println(myPow2(729, 5));
+        System.out.println(myPow2(9, 15));
+        System.out.println(myPow2(3, 30));
     }
 
     public static double myPow(double x, int n) {
@@ -28,20 +32,25 @@ public class PowXN {
             }
         }
         return result;
-    }
+    }   //  todo logN
 
-    public double bestMyPow(double x, int n) {
+    public static double myPow2(double x, int n) {
+        // x^n = 2^10 = 4^5
+        // 4 * 4^4 .... result = 4
+        // 4^4 = 16^2 .... result = 4
+        // 16^2 = 256 * 1 .... result = 4, 256
+        // result = 4 * 256
         long num = Math.abs((long) n);
         double result = 1.0;
         while (num != 0) {
-            if (num % 2 == 1) { // if n is an odd number
+            if (num % 2 == 1) {
                 result = result * x;
                 num = num - 1;
             }
             x = x * x;
             num = num / 2;
         }
-        return n < 0 ? 1.0 / result : result;
+        return result;
     }
 
 }
