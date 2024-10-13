@@ -14,7 +14,7 @@ import java.util.*;
 public class ValidAnagram1 {
 
     public static void main(String[] args) {
-
+        System.out.println((int) 'a');
     }
 
     public boolean isAnagram1(String s, String t) {
@@ -67,6 +67,42 @@ public class ValidAnagram1 {
             }
         }
         return map.values().stream().allMatch(item -> item == 0);
+    }
+
+    public boolean isAnagram4(String s, String t) {
+        if (s.length() != t.length()) return false;
+        int[] valid = new int[26];
+        for (int i = 0; i < s.length(); i++) {
+            char sCh = s.charAt(i);
+            char tCh = t.charAt(i);
+            int sIndex = sCh - 97;
+            int tIndex = tCh - 97;
+            valid[sIndex] += 1;
+            valid[tIndex] -= 1;
+        }
+        for (int j : valid) {
+            if (j != 0) {
+                return false;
+            }
+        }
+        return true;
+    }
+
+    public boolean bestIsAnagram(String s, String t) {
+        if (s.length() != t.length()) {
+            return false;
+        }
+        int[] table = new int[26];
+        for (int i = 0; i < s.length(); i++) {
+            table[s.charAt(i) - 'a']++;
+        }
+        for (int i = 0; i < t.length(); i++) {
+            table[t.charAt(i) - 'a']--;
+            if (table[t.charAt(i) - 'a'] < 0) {
+                return false;
+            }
+        }
+        return true;
     }
 
 }
