@@ -1,8 +1,6 @@
-import java.sql.SQLOutput;
-
 /**
  * packageName    : PACKAGE_NAME
- * fileName       : ReverseInteger1
+ * fileName       : PowXN1
  * author         : AngryPig123
  * date           : 24. 10. 11.
  * description    : LeetCode 50
@@ -11,12 +9,10 @@ import java.sql.SQLOutput;
  * -----------------------------------------------------------
  * 24. 10. 11.        AngryPig123       최초 생성
  */
-public class PowXN {
+public class PowXN1 {
 
     public static void main(String[] args) {
-        System.out.println(myPow2(729, 5));
-        System.out.println(myPow2(9, 15));
-        System.out.println(myPow2(3, 30));
+        System.out.println(myPow2(-2, 2));
     }
 
     public static double myPow(double x, int n) {
@@ -40,6 +36,7 @@ public class PowXN {
         // 4^4 = 16^2 .... result = 4
         // 16^2 = 256 * 1 .... result = 4, 256
         // result = 4 * 256
+        double origin = x;
         long num = Math.abs((long) n);
         double result = 1.0;
         while (num != 0) {
@@ -50,7 +47,7 @@ public class PowXN {
             x = x * x;
             num = num / 2;
         }
-        return result;
+        return origin > 0 ? result : (1 / result);
     }
 
 }
