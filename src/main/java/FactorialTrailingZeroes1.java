@@ -1,5 +1,3 @@
-import java.math.BigInteger;
-
 /**
  * packageName    : PACKAGE_NAME
  * fileName       : FactorialTrailingZeroes1

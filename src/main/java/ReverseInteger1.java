@@ -20,7 +20,7 @@ public class ReverseInteger1 {
         int result = 0;
         while (original > 0) {
             int digit = original % 10;
-            result = result  * 10 + digit;
+            result = result * 10 + digit;
             original /= 10;
         }
         return result;
