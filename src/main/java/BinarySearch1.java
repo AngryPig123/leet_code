@@ -13,14 +13,30 @@ public class BinarySearch1 {
 
     public static void main(String[] args) {
         int[] nums = new int[]{-1, 0, 3, 5, 9, 12};
-        System.out.println(search(nums, 9));
+        System.out.println(binarySearch1(nums, 9));
     }
 
-    public static int search(int[] nums, int target) {
+    public static int binarySearch1(int[] nums, int target) {
         int left = 0;
         int right = nums.length - 1;
         while (left <= right) {
             int point = (right + left) / 2;
+            if (nums[point] > target) {
+                right = point - 1;
+            } else if (nums[point] < target) {
+                left = point + 1;
+            }
+            if (nums[point] == target) return point;
+        }
+        return -1;
+    }
+
+    public static int bestBinarySearch1(int[] nums, int target) {
+        int left = 0;
+        int right = nums.length - 1;
+        while (left <= right) {
+            int point = left + (right - left) / 2;
+            //  int point = (right + left) / 2;
             if (nums[point] > target) {
                 right = point - 1;
             } else if (nums[point] < target) {
